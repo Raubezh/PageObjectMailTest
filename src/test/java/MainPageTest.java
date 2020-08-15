@@ -12,7 +12,6 @@ public class MainPageTest {
     private MainPage mainPage;
 
     @Before
-
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
@@ -23,17 +22,16 @@ public class MainPageTest {
 
         driver.get("https://mail.ru");
         mainPage = new MainPage(driver);
-
     }
 
     @Test
-
     public void loginTest(){
-        MainPage newMainPage = mainPage.login("fedor", "12344d");
+        MainPage newMainPage = mainPage.login("2idp", "");
     }
-    @After
 
+    @After
     public void tearDown(){
         driver.quit();
     }
+
 }

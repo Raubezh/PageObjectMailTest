@@ -11,6 +11,7 @@ public class MainPage {
     private By mailField = By.xpath("//input[@id='mailbox:login']");
     private By dropdownMailSelect = By.xpath("//div[@id='mailbox:select_container']");
     private By passwordButton = By.xpath("//input[@value='Ввести пароль']");
+    private By signInButton = By.xpath("//input[@value='Ввести пароль']");
     private By passwordField = By.xpath("//input[@id='mailbox:password']");
 
 
@@ -29,10 +30,16 @@ public class MainPage {
         return new MainPage(driver);
     }
 
+    public MainPage clickSignInButton(){
+        driver.findElement(signInButton).click();
+        return new MainPage(driver);
+    }
+
     public MainPage login(String email, String password){
         this.typeEmail(email);
         this.clickPasswordButton();
         this.typePassword(password);
+        this.clickSignInButton();
         return new MainPage(driver);
     }
 
