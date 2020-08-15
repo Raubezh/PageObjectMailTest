@@ -1,9 +1,40 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
     private WebDriver driver;
 
-    public MainPage(WebDriver driver){
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    private By mailField = By.xpath("//input[@id='mailbox:login']");
+    private By dropdownMailSelect = By.xpath("//div[@id='mailbox:select_container']");
+    private By passwordButton = By.xpath("//input[@value='Ввести пароль']");
+    private By passwordField = By.xpath("//input[@id='mailbox:password']");
+
+
+    public MainPage typeEmail(String email) {
+        driver.findElement(mailField).sendKeys(email);
+        return this;
+    }
+
+    public MainPage typePassword(String password) {
+        driver.findElement(passwordField).sendKeys(password);
+        return this;
+    }
+
+    public MainPage clickPasswordButton(){
+        driver.findElement(passwordButton).click();
+        return new MainPage(driver);
+    }
+
+    public MainPage login(String email, String password){
+        this.typeEmail(email);
+        this.clickPasswordButton();
+        this.typePassword(password);
+        return new MainPage(driver);
+    }
+
+
 }
