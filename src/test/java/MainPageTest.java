@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,14 @@ public class MainPageTest {
 
     @Test
     public void loginTest(){
-        MainPage newMainPage = mainPage.login("2idp", "");
+        mainPage = mainPage.login("2idp", "");
+    }
+
+    @Test
+    public void loginWithIncorrectCredsTest(){
+        mainPage = mainPage.login("fghh", "fgtr");
+        String error = mainPage.getErrorText();
+        Assert.assertEquals("Неверное имя или пароль", error);
     }
 
     @After

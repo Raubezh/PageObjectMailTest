@@ -13,6 +13,7 @@ public class MainPage {
     private By passwordButton = By.xpath("//input[@value='Ввести пароль']");
     private By signInButton = By.xpath("//input[@value='Ввести пароль']");
     private By passwordField = By.xpath("//input[@id='mailbox:password']");
+    private By getLoginError = By.xpath("//div[@class='mailbox__row mailbox__row_condensed i-font-md i-color-coral']");
 
 
     public MainPage typeEmail(String email) {
@@ -41,6 +42,10 @@ public class MainPage {
         this.typePassword(password);
         this.clickSignInButton();
         return new MainPage(driver);
+    }
+
+    public String getErrorText() {
+        return driver.findElement(getLoginError).getText();
     }
 
 
