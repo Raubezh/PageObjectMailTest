@@ -26,7 +26,7 @@ public class MainPageTest {
 
     @Test
     public void loginTest(){
-        MainPage newMainPage = mainPage.login("2idp", "");
+        MainPage newMainPage = mainPage.login("2idp", "@inbox.ru","848586");
     }
 
     @After
