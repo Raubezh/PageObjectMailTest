@@ -36,14 +36,20 @@ public class MainPage {
         return new MainPage(driver);
     }
 
-    public MainPage login(String email, String password){
+    public MainPage login(String email, String option, String password){
         this.typeEmail(email);
+        this.selectOption(option);
         this.clickPasswordButton();
         this.typePassword(password);
         this.clickSignInButton();
         return new MainPage(driver);
     }
 
+    public MainPage selectOption (String option) {
+        String optionXpath = String.format("//select/option[contains(text(),'%s')]", option);
+        driver.findElement(By.xpath(optionXpath)).click();
+        return this;
+    }
     public String getErrorText() {
         return driver.findElement(getLoginError).getText();
     }

@@ -27,14 +27,15 @@ public class MainPageTest {
 
     @Test
     public void loginTest(){
-        mainPage = mainPage.login("2idp", "");
+        mainPage = mainPage.login("2idp", "inbox.ru","488768");
     }
 
     @Test
     public void loginWithIncorrectCredsTest(){
-        mainPage = mainPage.login("fghh", "fgtr");
+        mainPage = mainPage.login("fghh","mail.ru", "fgtr");
         String error = mainPage.getErrorText();
         Assert.assertEquals("Неверное имя или пароль", error);
+        MainPage newMainPage = mainPage.login("2idp", "@inbox.ru","848586");
     }
 
     @After
